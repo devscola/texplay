@@ -283,10 +283,8 @@ m_dup_image(VALUE self)
 
     get_texture_info(self, &tex);
 
-    window = rb_funcall(self, rb_intern("__window__"), 0);
-
     /* create a new blank image with the height/width of the current image */
-    dupped_image = create_image(window, tex.width, tex.height);
+    dupped_image = create_image(tex.width, tex.height);
 
     /* get the new image's data */
     get_texture_info(dupped_image, &dup_tex);

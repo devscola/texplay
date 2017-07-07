@@ -310,7 +310,7 @@ get_pixel_data(texture_info * tex, int x, int y)
    otherwise, try to use the 2nd param (dup) to create a duplicate image
  */
 VALUE
-create_image(VALUE window, int width, int height)
+create_image(int width, int height)
 {
     static VALUE empty_image_stub = 0;
     static VALUE image = 0;
@@ -330,7 +330,7 @@ create_image(VALUE window, int width, int height)
 
     rmagick_img = rb_funcall(empty_image_stub, rb_intern("new"), 2, INT2FIX(width), INT2FIX(height));
 
-    new_image = rb_funcall(image, rb_intern("new"), 3, window, rmagick_img, options);
+    new_image = rb_funcall(image, rb_intern("new"), 2, rmagick_img, options);
 
     return new_image;
 }

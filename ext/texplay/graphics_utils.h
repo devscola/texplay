@@ -17,6 +17,6 @@ rgba get_pixel_color(texture_info * tex, int x, int y);
 float* get_pixel_data(texture_info * tex, int x, int y);
 
 /* create a blank gosu image of width and height */
-VALUE create_image(VALUE window, int width, int height);
+VALUE create_image(int width, int height);
 
 #endif

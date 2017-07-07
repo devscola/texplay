@@ -169,9 +169,6 @@ module Gosu
     # bring in the TexPlay image manipulation methods
     include TexPlay
 
-    attr_reader :__window__
-    protected :__window__
-
     class << self
       alias_method :original_new, :new
 
@@ -181,7 +178,7 @@ module Gosu
         # invoke old behaviour
         obj = original_new(*args, &block)
 
-        prepare_image(obj, args.first, options)
+        prepare_image(obj, options)
       end
 
       alias_method :original_from_text, :from_text
@@ -192,10 +189,10 @@ module Gosu
         # invoke old behaviour
         obj = original_from_text(*args, &block)
 
-        prepare_image(obj, args.first, options)
+        prepare_image(obj, options)
       end
 
-      def prepare_image(obj, window, options={})
+      def prepare_image(obj, options={})
         options = {
           :caching => TexPlay.get_options[:caching]
         }.merge!(options)
@@ -225,8 +222,6 @@ module Gosu
 
         # run custom setup
         TexPlay.setup(obj)
-
-        obj.instance_variable_set(:@__window__, window)
 
         obj
       end
