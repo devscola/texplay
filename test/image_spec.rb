@@ -17,14 +17,14 @@ describe Gosu::Image do
     Object.remove_const(:NormalImageSize)
     Object.remove_const(:TooLargeImageSize)
   end
-  
+
   describe "Gosu::Image#new (patched by TexPlay)" do
     describe "caching option" do
       it "should not cache image if :caching => false" do
-        source_image = TexPlay.create_image(@window, *NormalImageSize)
+        source_image = TexPlay.create_image(*NormalImageSize)
         source_image.quad_cached?.should == false
 
-        image = Gosu::Image.new(@window, source_image, :caching => false)
+        image = Gosu::Image.new(source_image, :caching => false)
         image.width.should == NormalImageSize[0]
         image.height.should == NormalImageSize[1]
 
@@ -32,9 +32,9 @@ describe Gosu::Image do
       end
 
       it "should cache the image if :caching => true" do
-        source_image = TexPlay.create_image(@window, *NormalImageSize)
+        source_image = TexPlay.create_image(*NormalImageSize)
 
-        image = Gosu::Image.new(@window, source_image, :caching => true)
+        image = Gosu::Image.new(source_image, :caching => true)
         image.width.should == NormalImageSize[0]
         image.height.should == NormalImageSize[1]
 
