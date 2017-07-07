@@ -1,7 +1,5 @@
 $LOAD_PATH.unshift File.join(File.expand_path(__FILE__), '..', 'lib','texplay')
-direc = File.dirname(__FILE__)
-
-require "#{direc}/../lib/texplay"
+require 'texplay'
 
 describe TexPlay do
   described_class = TexPlay

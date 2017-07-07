@@ -1,17 +1,17 @@
 
 # (C) John Mair 2009, under the MIT licence
 
-direc = File.expand_path(File.dirname(__FILE__))
-
 # include gosu first
 require 'gosu'
-require "#{direc}/texplay/version"
+
+$LOAD_PATH.unshift File.dirname(File.expand_path(__FILE__))
+require "texplay/version"
 
 begin
   RUBY_VERSION =~ /(\d+\.\d+)/
-  require "#{direc}/texplay/#{$1}/texplay.so"
+  require "texplay/#{$1}/texplay.so"
 rescue LoadError
-  require "#{direc}/texplay/texplay.so"
+  require "texplay/texplay.so"
 end
 
 module TexPlay
@@ -160,7 +160,7 @@ module TexPlay
   end
 end
 
-require "#{direc}/texplay-contrib"
+require "texplay-contrib"
 
 # monkey patching the Gosu::Image class to add image manipulation functionality
 module Gosu

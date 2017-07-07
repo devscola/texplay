@@ -1,6 +1,5 @@
-direc = File.dirname(__FILE__)
-
-require "#{direc}/../lib/texplay"
+$LOAD_PATH.unshift File.join(File.expand_path(__FILE__), '..', 'lib','texplay')
+require 'texplay'
 
 class Module
   public :remove_const

@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("gosu","~> 0.12.1")
   s.add_development_dependency("rspec",">=2.0.0")
   s.add_development_dependency("rake-compiler",">=0.7.9")
+  s.add_development_dependency("baseline",">=0.1.0")
   s.require_path = 'lib'
   s.extensions = ['ext/texplay/extconf.rb']
 end
