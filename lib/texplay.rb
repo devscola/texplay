@@ -25,22 +25,22 @@ module TexPlay
     end
 
     def setup(receiver)
-      if @__init_procs__ 
+      if @__init_procs__
         @__init_procs__.each do |init_proc|
           receiver.instance_eval(&init_proc)
         end
       end
     end
 
-    def create_image(window, width, height, options={})
+    def create_image(width, height, options={})
       options = {
         :color => :alpha,
         :caching => false,
       }.merge!(options)
 
       raise ArgumentError, "Height and width must be positive" if height <= 0 or width <= 0
-      
-      img = Gosu::Image.new(window, EmptyImageStub.new(width, height), :caching => options[:caching])
+
+      img = Gosu::Image.new(EmptyImageStub.new(width, height), :caching => options[:caching])
 
       # this should be a major speedup (avoids both a cache and a sync
       # if color is alpha (default)
@@ -54,7 +54,7 @@ module TexPlay
     alias_method :create_blank_image, :create_image
 
     # Image can be :tileable, but it will break if it is tileable AND gets modified after creation.
-    def from_blob(window, blob_data, width, height, options={})
+    def from_blob(blob_data, width, height, options={})
       options = {
         :caching => false,
         :tileable => false,
@@ -67,7 +67,7 @@ module TexPlay
         raise ArgumentError, "Blob data is not of the correct size (expected #{expected_size} but received #{blob_data.size} bytes)"
       end
 
-      Gosu::Image.new(window, ImageStub.new(blob_data, width, height), options[:tileable], :caching => options[:caching])
+      Gosu::Image.new(ImageStub.new(blob_data, width, height), options[:tileable], :caching => options[:caching])
     end
 
     def set_options(options = {})
@@ -171,8 +171,8 @@ module Gosu
 
     attr_reader :__window__
     protected :__window__
-    
-    class << self 
+
+    class << self
       alias_method :original_new, :new
 
       def new(*args, &block)
@@ -183,7 +183,7 @@ module Gosu
 
         prepare_image(obj, args.first, options)
       end
-      
+
       alias_method :original_from_text, :from_text
 
       def from_text(*args, &block)
@@ -205,7 +205,7 @@ module Gosu
         # we can't manipulate large images, so skip them.
         if obj.width <= (TexPlay::TP_MAX_QUAD_SIZE) &&
             obj.height <= (TexPlay::TP_MAX_QUAD_SIZE)
-          
+
           if caching_mode
             if caching_mode == :lazy
 
@@ -214,7 +214,7 @@ module Gosu
               obj.refresh_cache if obj.quad_cached?
 
             else
-              
+
               # force a cache - this obviates the need for a
               # potentialy expensive runtime cache of the image by
               # moving the cache to load-time
@@ -222,7 +222,7 @@ module Gosu
             end
           end
         end
-        
+
         # run custom setup
         TexPlay.setup(obj)
 
@@ -230,12 +230,12 @@ module Gosu
 
         obj
       end
-      
+
       private :prepare_image
     end
 
     alias_method :rows, :height
-    alias_method :columns, :width             
+    alias_method :columns, :width
   end
 
   class Window
@@ -335,7 +335,7 @@ module Gosu
 end
 
 # a bug in ruby 1.8.6 rb_eval_string() means i must define this here (rather than in texplay.c)
-class Proc  
+class Proc
   def __context__
     eval('self', self.binding)
   end
