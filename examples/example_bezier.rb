@@ -5,7 +5,7 @@ require 'common'
 class W < Gosu::Window
     def initialize
         super(500, 500, false, 20)
-        @img = TexPlay.create_image(self, 500, 500)
+        @img = TexPlay.create_image(500, 500)
 
         # put a border on the image
         @img.rect 0,0, @img.width - 1, @img.height - 1
@@ -22,20 +22,20 @@ class W < Gosu::Window
             points << p
         }
 
-        # making the bezier 
+        # making the bezier
         @img.bezier points, :color => :red
 
         # NOTE: can 'close' a bezier curve too (as with polylines)
     end
-    
+
     def draw
 
         @img.draw 100, 50,1
     end
-    
+
 end
 
 
 w = W.new
 w.show
-        
+

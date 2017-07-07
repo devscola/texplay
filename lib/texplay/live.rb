@@ -32,9 +32,9 @@ class WinClass < Gosu::Window
       @rotate = 0
     end
   end
-  
+
   attr_reader :images, :view
-  
+
   def initialize
     super(WIDTH, HEIGHT, false)
     Gosu.enable_undocumented_retrofication
@@ -42,20 +42,20 @@ class WinClass < Gosu::Window
     @images = []
     @view = View.new
     @pry_instance = Pry.new :prompt => [Proc.new { "(live)> " }, Proc.new { "(live)* " }]
-    
-    @img = TexPlay.create_image(self, 200, 200)
+
+    @img = TexPlay.create_image(200, 200)
     @img.rect 0, 0, @img.width - 1, @img.height - 1
-    
+
     images << @img
     @binding = binding
   end
 
   def create_image(width, height, options={})
-    TexPlay.create_image(self, width, height, options)
+    TexPlay.create_image(width, height, options)
   end
 
   def load_image(file)
-    Gosu::Image.new(self, file)
+    Gosu::Image.new(file)
   end
 
   def show_image(image)
@@ -65,7 +65,7 @@ class WinClass < Gosu::Window
   def hide_image(image)
     images.delete(image)
   end
-  
+
   def draw
     images.uniq!
     images.each do |v|

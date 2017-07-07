@@ -9,16 +9,16 @@ end
 class W < Gosu::Window
   def initialize
     super(500, 300, false, 20)
-    @spritesheet = Gosu::Image.new(self, "#{Common::MEDIA}/body.png", false)
-    @spritesheet.splice(Gosu::Image.new(self, "#{Common::MEDIA}/face.png", false), 0,0, :alpha_blend => true)
+    @spritesheet = Gosu::Image.new("#{Common::MEDIA}/body.png", false)
+    @spritesheet.splice(Gosu::Image.new("#{Common::MEDIA}/face.png", false), 0,0, :alpha_blend => true)
     @sprite_array = Gosu::Image::load_tiles(self, @spritesheet, 40, 80, false)
   end
-  
+
   def draw
     @spritesheet.draw(200,200,0)
     # @sprite_array[0].draw(200,200,0)
   end
-  
+
 end
 
 

@@ -5,19 +5,19 @@ require 'common'
 class W < Gosu::Window
     def initialize
         super(500, 500, false, 20)
-        @img = Gosu::Image.new(self, "#{Common::MEDIA}/sunset.png")
+        @img = Gosu::Image.new("#{Common::MEDIA}/sunset.png")
         @x = 100
         @y = 100
-        
+
         @x2 = 400
         @y2 = 100
         @rad = 70
         @s = true
 
-        @copy = TexPlay.create_image(self, @rad * 2 + 1, @rad * 2 + 1)
-      @copy2 = TexPlay.create_image(self, @rad * 2 + 1, @rad * 2 + 1)
+        @copy = TexPlay.create_image(@rad * 2 + 1, @rad * 2 + 1)
+      @copy2 = TexPlay.create_image(@rad * 2 + 1, @rad * 2 + 1)
     end
-    
+
     def draw
       @pause = true
 
@@ -43,8 +43,8 @@ class W < Gosu::Window
             IL.OriginFunc(IL::ORIGIN_UPPER_LEFT)
 #            screenshot.crop(0,0, 500, 500).save("screenshot.jpg").free
             exit
-        end  
-        
+        end
+
     end
 
     def update
@@ -53,10 +53,10 @@ class W < Gosu::Window
         @s = nil if @s
 
     end
-    
+
 end
 
 
 w = W.new
 w.show
-        
+

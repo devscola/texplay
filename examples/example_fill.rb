@@ -6,8 +6,8 @@ class W < Gosu::Window
     def initialize
         super(500, 500, false, 20)
         @img = TexPlay::create_blank_image(self, 1022, 800)
-        @tp = Gosu::Image.new(self, "#{Common::MEDIA}/texplay.png")
-        @gosu = Gosu::Image.new(self, "#{Common::MEDIA}/sand1.png")
+        @tp = Gosu::Image.new("#{Common::MEDIA}/texplay.png")
+        @gosu = Gosu::Image.new("#{Common::MEDIA}/sand1.png")
 
         points = []
 
@@ -27,17 +27,17 @@ class W < Gosu::Window
         @img.fill 300, 650, :texture => @gosu
 
         # let's demonstrate by drawing a circle using the gosu.png texture
-        # NOTE: :texture even works on lines, boxes, polylines, beziers etc. 
+        # NOTE: :texture even works on lines, boxes, polylines, beziers etc.
         @img.circle 400, 50, 40, :fill => true, :texture => @tp
     end
-    
+
     def draw
         @img.draw 0, 0,1
     end
-    
+
 end
 
 
 w = W.new
 w.show
-        
+

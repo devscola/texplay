@@ -5,9 +5,9 @@ require 'texplay'
 class W < Gosu::Window
     def initialize
         super(500, 500, false, 20)
-        @img = Gosu::Image.new(self, "#{Common::MEDIA}/empty2.png")
-        @tp = Gosu::Image.new(self, "#{Common::MEDIA}/texplay.png")
-        @gosu = Gosu::Image.new(self, "#{Common::MEDIA}/gosu.png")
+        @img = Gosu::Image.new("#{Common::MEDIA}/empty2.png")
+        @tp = Gosu::Image.new("#{Common::MEDIA}/texplay.png")
+        @gosu = Gosu::Image.new("#{Common::MEDIA}/gosu.png")
 
         # put a border on the image
         @img.rect 0,0, @img.width - 1, @img.height - 1
@@ -16,7 +16,7 @@ class W < Gosu::Window
         # to the proc. This gives you pixel-level control over the drawing.
         # (NOTE: the return value of the proc is used as the pixel color, so it should be a 4 element array or
         # a valid color symbol)
-        
+
         # color_control accepts procs of 4 types:
         # arity of 0: nothing is yielded and color is set by return value of block
         # arity of 1: just the destination pixel color is yielded
@@ -47,7 +47,7 @@ class W < Gosu::Window
         # here we simply use the x, y values to make our own circle with a rough edge
         @img.circle 200,400, 70,
         :color_control => proc { |c,x,y|
-            @img.pixel(x + (rand(4) - 2), y + (rand(4) - 2)) 
+            @img.pixel(x + (rand(4) - 2), y + (rand(4) - 2))
             :none   # this ensures that the 'actual' circle isn't drawn, instead its coordinates are
                     # simply utilized to draw a ragged edge of another circle (using @img.pixel)
         }
@@ -60,10 +60,10 @@ class W < Gosu::Window
 
         @img.draw 0, 0,1
     end
-    
+
 end
 
 
 w = W.new
 w.show
-        
+

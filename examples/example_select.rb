@@ -8,12 +8,12 @@ class W < Gosu::Window
 
       # draw a filled rect with left region blue, and right region red
       # at top and yellow at bottom
-      @img = TexPlay.create_image(self, 500, 500, :color => Gosu::Color::BLUE)
+      @img = TexPlay.create_image(500, 500, :color => Gosu::Color::BLUE)
       @img.rect 250,0, 500, 500, :color => :red, :fill => true
       @img.rect 250, 250, 500, 500, :color => :yellow, :fill => true
 
       # base rect is green on left and purple on right
-      @base = TexPlay.create_image(self, 500, 500, :color => :green)
+      @base = TexPlay.create_image(500, 500, :color => :green)
       @base.rect 250,0, 500, 500, :color => :purple, :fill => true
 
       # splice @img into @base, and select the yellow part of @img to
@@ -23,14 +23,14 @@ class W < Gosu::Window
       @base.splice @img, 0, 0, :dest_select => :purple, :source_select => :yellow
 
     end
-    
+
     def draw
       @base.draw 0, 0,1
     end
-    
+
 end
 
 
 w = W.new
 w.show
-        
+

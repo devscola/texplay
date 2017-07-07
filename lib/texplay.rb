@@ -250,7 +250,7 @@ module Gosu
     #       def draw
     #         # Always render images before regular drawing to the screen.
     #         unless @rendered_image
-    #           @rendered_image = TexPlay.create_image(self, 300, 300, :color => :blue)
+    #           @rendered_image = TexPlay.create_image(300, 300, :color => :blue)
     #           render_to_image(@rendered_image) do
     #             @an_image.draw 0, 0, 0
     #             @another_image.draw 130, 0, 0

@@ -4,7 +4,7 @@ require 'common'
 class W < Gosu::Window
     def initialize
         super(500, 500, false, 20)
-        @img = Gosu::Image.new(self, "#{Common::MEDIA}/sunset.png")
+        @img = Gosu::Image.new("#{Common::MEDIA}/sunset.png")
 
         # each can accept a block of two types of arity:
         # arity 1 - yields just the pixel color
@@ -25,15 +25,15 @@ class W < Gosu::Window
             c[2] = 0
         end
     end
-    
+
     def draw
-    
+
         @img.draw 0, 0,1
     end
-    
+
 end
 
 
 w = W.new
 w.show
-        
+

@@ -16,15 +16,15 @@ class W < Gosu::Window
     @max_opacity2 = 0.5
 
     penumbra = (@radius - @inner).to_i
-    
-    @img = Gosu::Image.new(self, "#{Common::MEDIA}/maria.png")
+
+    @img = Gosu::Image.new("#{Common::MEDIA}/maria.png")
     #@img.rect(0, 0, @img.width - 1, @img.height - 1, :fill => true)
 
-    @circ2 = TexPlay.create_image(self, @radius * 2, @radius * 2)
+    @circ2 = TexPlay.create_image(@radius * 2, @radius * 2)
 
-    @circ1 = TexPlay.create_image(self, @radius * 2, @radius * 2)
+    @circ1 = TexPlay.create_image(@radius * 2, @radius * 2)
 
-     
+
     shading_step = @max_opacity2.to_f / penumbra.to_f
     @radius.to_i.downto(@inner) { |r|
       @circ1.circle @radius, @radius, r, :color => [1, 0, 0, ((@radius - r) * shading_step)],
@@ -32,7 +32,7 @@ class W < Gosu::Window
     }
 
     @circ1.circle @radius, @radius, @inner, :color => [1, 0, 0, @max_opacity2], :fill => true
-    
+
    shading_step = @max_opacity.to_f / penumbra.to_f
     @radius.to_i.downto(@inner) { |r|
       @circ2.circle @radius, @radius, r, :color => [0, 0, 1, ((@radius - r) * shading_step)],
@@ -41,14 +41,14 @@ class W < Gosu::Window
 
     @circ2.circle @radius, @radius, @inner, :color => [0, 0, 1, @max_opacity], :fill => true
   end
-  
+
   def draw
     @x1 += 1
     @y1 += 1
 
     @x2 -= 1
     @y2 += 1
-    
+
 
 
     @img.draw 10, 10,1
@@ -60,13 +60,13 @@ class W < Gosu::Window
       IL.OriginFunc(IL::ORIGIN_UPPER_LEFT)
       #            screenshot.crop(0,0, 500, 500).save("screenshot.jpg").free
       exit
-    end  
-    
+    end
+
   end
 
   def update
   end
-  
+
 end
 
 

@@ -5,7 +5,7 @@ require 'common'
 class W < Gosu::Window
     def initialize
         super(500, 500, false, 20)
-        @img = Gosu::Image.new(self, "#{Common::MEDIA}/empty2.png")
+        @img = Gosu::Image.new("#{Common::MEDIA}/empty2.png")
 
         # sets the 'global' color for all actions in this image
         @img.color :red
@@ -18,14 +18,14 @@ class W < Gosu::Window
 
         # let's draw some lazy shapes
         @img.set_options :sync_mode => :lazy_sync
-        
+
         @img.ngon 200, 300, 40, 5, :color => :red
         @img.ngon 280, 300, 40, 6, :color => :green
         @img.ngon 360, 300, 40, 7, :color => :blue
 
         # now let's sync the lazy shapes to gl
         @img.paint
-        
+
         # NOTE: the lazy drawing (above) is identical to using the following paint block
         # @img.paint {
         #     ngon 200, 300, 50, 5
@@ -34,7 +34,7 @@ class W < Gosu::Window
 
         # end lazy drawing mode
         @img.delete_options
-        
+
         # the default sync mode is eager_sync
         # in this mode actions are drawn and sync'd immediately
         # NOTE: TexPlay only syncs the part of the image that changed to gl
@@ -47,13 +47,13 @@ class W < Gosu::Window
             line 0, 0, @img.width, @img.height
         }
     end
-    
+
     def draw
-        
+
         @img.draw 0, 0,1
     end
 end
 
 w = W.new
 w.show
-        
+

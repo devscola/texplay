@@ -5,8 +5,8 @@ require 'common'
 class W < Gosu::Window
     def initialize
         super(500, 500, false, 20)
-        @img = Gosu::Image.new(self, "#{Common::MEDIA}/empty2.png")
-        @tp = Gosu::Image.new(self, "#{Common::MEDIA}/texplay.png")
+        @img = Gosu::Image.new("#{Common::MEDIA}/empty2.png")
+        @tp = Gosu::Image.new("#{Common::MEDIA}/texplay.png")
 
 
         # put a border on the image
@@ -33,14 +33,14 @@ class W < Gosu::Window
         # this action will no longer have any default values
         @img.ngon 200, 400, 90, 10
     end
-    
+
     def draw
         @img.draw 100, 50,1
     end
-    
+
 end
 
 
 w = W.new
 w.show
-        
+

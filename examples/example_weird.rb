@@ -5,11 +5,11 @@ require 'common'
 class W < Gosu::Window
   def initialize
     super(500, 500, false, 20)
-    @img = Gosu::Image.new(self, "#{Common::MEDIA}/gob.png")
+    @img = Gosu::Image.new("#{Common::MEDIA}/gob.png")
     @img.rect 0, 0, @img.width - 1, @img.height - 1
     puts @img.line 1,1, 1, @img.height - 1, :trace => { :while_color => :alpha }
-    
-    
+
+
   end
 
   def draw

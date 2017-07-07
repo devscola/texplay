@@ -5,7 +5,7 @@ require 'common'
 class W < Gosu::Window
     def initialize
         super(500, 500, false, 20)
-        @img = Gosu::Image.new(self, "#{Common::MEDIA}/sunset.png")
+        @img = Gosu::Image.new("#{Common::MEDIA}/sunset.png")
         @img.rect 0,0, @img.width - 1, @img.height - 1
 
         # testing Gosu::Image#dup
@@ -18,7 +18,7 @@ class W < Gosu::Window
                 :little
             end
         end
-        
+
         # clone the image.
         # NB #clone also copies singleton
         @bunk = @img.clone
@@ -32,7 +32,7 @@ class W < Gosu::Window
         # add a red line to the copy to identify it
         #@bunk.line 0, 0, 1024, 1024, :color => :red
 
-        @bunk.each(:region =>[200,200,350,350]) { |c,x,y| # 
+        @bunk.each(:region =>[200,200,350,350]) { |c,x,y| #
 
             num_pixels = 0
             total = [0, 0, 0, 0]
@@ -56,7 +56,7 @@ class W < Gosu::Window
         }
 
     end
-    
+
     def draw
         x = @img.width * rand
         y = @img.height * rand
@@ -64,10 +64,10 @@ class W < Gosu::Window
         @img.draw 0, 0,1
         @bunk.draw 0, 0,1
     end
-    
+
 end
 
 
 w = W.new
 w.show
-        
+

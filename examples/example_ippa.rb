@@ -5,7 +5,7 @@ class Window < Gosu::Window
   def initialize
     super(500, 500, false, 20)
 
-    @image = TexPlay.create_image(self, 50, 50)
+    @image = TexPlay.create_image(50, 50)
 
     from_x = 50
     from_y = 50

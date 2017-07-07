@@ -4,9 +4,9 @@ require 'common'
 class W < Gosu::Window
     def initialize
         super(500, 500, false, 20)
-        @img = Gosu::Image.new(self, "#{Common::MEDIA}/empty2.png")
-        @tp = Gosu::Image.new(self, "#{Common::MEDIA}/texplay.png")
-        @gosu = Gosu::Image.new(self, "#{Common::MEDIA}/gosu.png")
+        @img = Gosu::Image.new("#{Common::MEDIA}/empty2.png")
+        @tp = Gosu::Image.new("#{Common::MEDIA}/texplay.png")
+        @gosu = Gosu::Image.new("#{Common::MEDIA}/gosu.png")
 
         # put a border on the image
         @img.rect 0,0, @img.width - 1, @img.height - 1
@@ -30,19 +30,19 @@ class W < Gosu::Window
         @img.fill 300, 480, :texture => @tp
 
         # let's demonstrate by drawing a circle using the gosu.png texture
-        # NOTE: :texture even works on lines, boxes, polylines, beziers etc. 
+        # NOTE: :texture even works on lines, boxes, polylines, beziers etc.
         @img.circle 400, 50, 40, :fill => true, :texture => @gosu
-        
+
     end
-    
+
     def draw
 
         @img.draw 0, 0,1
     end
-    
+
 end
 
 
 w = W.new
 w.show
-        
+

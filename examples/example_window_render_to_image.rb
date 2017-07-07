@@ -6,17 +6,17 @@ class W < Gosu::Window
     super(500, 500, false)
     self.caption = "Press <escape> to render to texture"
 
-    @picture = Gosu::Image.new(self, "#{Common::MEDIA}/maria.png")
-    @block_image = TexPlay.create_image(self, 10, 10, :color => Gosu::Color::RED)
-    @rendered_image = TexPlay.create_image(self, Gosu::MAX_TEXTURE_SIZE - 2, Gosu::MAX_TEXTURE_SIZE - 2, :color => :purple)
+    @picture = Gosu::Image.new("#{Common::MEDIA}/maria.png")
+    @block_image = TexPlay.create_image(10, 10, :color => Gosu::Color::RED)
+    @rendered_image = TexPlay.create_image(Gosu::MAX_TEXTURE_SIZE - 2, Gosu::MAX_TEXTURE_SIZE - 2, :color => :purple)
 
     @display = false
   end
 
   def update
-    
+
   end
-  
+
   def draw
     # Render the image once.
     if button_down?(Gosu::KbEscape) and not @display
@@ -32,7 +32,7 @@ class W < Gosu::Window
     # Display it indefinitely after that.
     @rendered_image.draw(10, 10, 0) if @display
   end
-  
+
 end
 
 

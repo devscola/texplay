@@ -5,13 +5,13 @@ require 'common'
 class W < Gosu::Window
     def initialize
         super(500, 500, false, 20)
-        @img = Gosu::Image.new(self, "#{Common::MEDIA}/empty2.png")
-        @gosu = Gosu::Image.new(self, "#{Common::MEDIA}/gosu.png")
+        @img = Gosu::Image.new("#{Common::MEDIA}/empty2.png")
+        @gosu = Gosu::Image.new("#{Common::MEDIA}/gosu.png")
 
         # put a border on the image
         @img.rect 0,0, @img.width - 1, @img.height - 1, :color => 0xffff00ff, :fill => true
 
-        # perform some e drawing actions 
+        # perform some e drawing actions
         @img.line 0,0, @img.width - 1, @img.height - 1, :color => Gosu::Color::AQUA
         @img.circle 400, 100, 40, :fill => true, :color => [rand, rand, rand, 1]
       @img.rect 200, 300, 300, 400, :fill => true, :color => :red, :source_ignore => [:green],
@@ -33,14 +33,14 @@ class W < Gosu::Window
       puts (@img.get_pixel 2000, 310).inspect
       puts @img.get_pixel 2000, 310, :color_mode => :gosu
     end
-    
+
     def draw
         @img.draw 100, 50,1
     end
-    
+
 end
 
 
 w = W.new
 w.show
-        
+
